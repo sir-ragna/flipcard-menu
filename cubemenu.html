@@ -164,9 +164,7 @@
                     slide.classList.remove('next-slide');
                     slide.classList.remove('slide-transition');
                     slide.classList.add('current-slide');
-                }, 700);
-            
-            return false;
+                }, 600);
         }, 0);
         
         
@@ -183,16 +181,15 @@
                 current.classList.remove('slide-transition');
                 current.classList.remove('slide-out-left');
                 current.classList.add('previous-slide');
-        }, 700);
+        }, 600);
     
-        return false;
     };
     
     document.getElementById('previous-slide').onclick = function() {
         console.log('previous slide');
         // identify next slide
         previous_slides = document.getElementsByClassName('previous-slide');
-        if (!previous_slides) {
+        if (previous_slides.length === 0) {
             return false;
         }
         slide = previous_slides.item(previous_slides.length - 1);
@@ -207,9 +204,8 @@
                     slide.classList.remove('previous-slide');
                     slide.classList.remove('slide-transition');
                     slide.classList.add('current-slide');
-                }, 700);
+                }, 600);
             
-            return false;
         }, 0);
         
         
@@ -226,9 +222,8 @@
                 current.classList.remove('slide-transition');
                 current.classList.remove('slide-out-right');
                 current.classList.add('next-slide');
-        }, 700);
+        }, 600);
         
-        return false;
     };
     
     var cummulativeHeight = 0;
@@ -238,52 +233,9 @@
         console.log(slide);
         cummulativeHeight += slide.style.height;
         slide.style['top'] =  '-' + (i * 200) + 'px';
-
         
     }
     
-</script>
-
-<script>
-
-    //var camera, scene, renderer;
-    //var geometry, material, mesh;
-    //
-    //init();
-    //animate();
-    //
-    //function init() {
-    //
-    //    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
-    //    camera.position.z = 1000;
-    //
-    //    scene = new THREE.Scene();
-    //
-    //    geometry = new THREE.CubeGeometry( 200, 200, 200 );
-    //    material = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } );
-    //
-    //    mesh = new THREE.Mesh( geometry, material );
-    //    scene.add( mesh );
-    //
-    //    renderer = new THREE.CanvasRenderer();
-    //    renderer.setSize( window.innerWidth, window.innerHeight );
-    //
-    //    document.body.appendChild( renderer.domElement );
-    //
-    //}
-    //
-    //function animate() {
-    //
-    //    // note: three.js includes requestAnimationFrame shim
-    //    requestAnimationFrame( animate );
-    //
-    //    mesh.rotation.x += 0.01;
-    //    mesh.rotation.y += 0.02;
-    //
-    //    renderer.render( scene, camera );
-    //
-    //}
-
 </script>
 
 </body>
