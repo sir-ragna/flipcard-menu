@@ -19,13 +19,14 @@
         height: 200px;
         width: 200px;
         position: relative;
+
     }
     
     
     .next-slide {
-        transform: rotateY(-90deg);
-        -webkit-transform: rotateY(-90deg);
-        -moz-transform: rotateY(-90deg);
+        transform: perspective(800px) rotateY(90deg);
+        -webkit-transform: perspective(800px) rotateY(90deg);
+        -moz-transform: perspective(800px) rotateY(90deg);
         left: 500px;
         transform-style: preserve-3d;
         -webkit-transform-style: preserve-3d;
@@ -43,17 +44,17 @@
     
     .next-slide.slide-transition {
         
-        transform: rotateY(0deg);
-        -webkit-transform: rotateY(0deg);
-        -moz-transform: rotateY(0deg);
+        transform: perspective(800px) rotateY(0deg);
+        -webkit-transform: perspective(800px) rotateY(0deg);
+        -moz-transform: perspective(800px) rotateY(0deg);
         left: 0px;
     }
     
     .current-slide {
         /* just show it */
-        transform: rotateY(0deg);
-        -webkit-transform: rotateY(0deg);
-        -moz-transform: rotateY(0deg);
+        transform: perspective(800px) rotateY(0deg);
+        -webkit-transform: perspective(800px) rotateY(0deg);
+        -moz-transform: perspective(800px) rotateY(0deg);
         left: 0px;
         transform-style: preserve-3d;
         -webkit-transform-style: preserve-3d;
@@ -61,9 +62,9 @@
     }
     
     .current-slide.slide-out-left {
-        transform: rotateY(-90deg);
-        -webkit-transform: rotateY(-90deg);
-        -moz-transform: rotateY(-90deg);
+        transform: perspective(800px) rotateY(-90deg);
+        -webkit-transform: perspective(800px) rotateY(-90deg);
+        -moz-transform: perspective(800px) rotateY(-90deg);
         left: -500px;
         transform-style: preserve-3d;
         -webkit-transform-style: preserve-3d;
@@ -78,9 +79,9 @@
     }
     
     .previous-slide {
-        transform: rotateY(-90deg);
-        -webkit-transform: rotateY(-90deg);
-        -moz-transform: rotateY(-90deg);
+        transform: perspective(800px) rotateY(-90deg);
+        -webkit-transform: perspective(800px) rotateY(-90deg);
+        -moz-transform: perspective(800px) rotateY(-90deg);
         left: -500px;
         transform-style: preserve-3d;
         -webkit-transform-style: preserve-3d;
@@ -88,9 +89,9 @@
     }
     
     .previous-slide.slide-transition {
-        transform: rotateY(0deg);
-        -webkit-transform: rotateY(0deg);
-        -moz-transform: rotateY(0deg);
+        transform: perspective(800px) rotateY(0deg);
+        -webkit-transform: perspective(800px) rotateY(0deg);
+        -moz-transform: perspective(800px) rotateY(0deg);
         left: 0px;
     }
     
@@ -147,15 +148,18 @@
         }
     }
     
-    
-    document.getElementById('next-slide').onclick = function() {
+    var next_slide = function(){
         console.log('next slide');
         
         // identify next slide
-        slide = document.getElementsByClassName('next-slide')[0];
-        if (!slide) {
-            return false;
+        var list_of_next_slides = document.getElementsByClassName('next-slide');
+        if (list_of_next_slides.length === 0) {
+            // there is no next slide
+            console.log("There is no next slide");
+            return;
         }
+        slide = list_of_next_slides.item(0);
+        
         window.setTimeout(function(){
 
             slide.style.zIndex = 1;
@@ -182,7 +186,12 @@
                 current.classList.remove('slide-out-left');
                 current.classList.add('previous-slide');
         }, 600);
+
+    };
     
+    document.getElementById('next-slide').onclick = function() {
+        next_slide();
+        return false;
     };
     
     document.getElementById('previous-slide').onclick = function() {
@@ -223,7 +232,7 @@
                 current.classList.remove('slide-out-right');
                 current.classList.add('next-slide');
         }, 600);
-        
+        return false;
     };
     
     var cummulativeHeight = 0;
