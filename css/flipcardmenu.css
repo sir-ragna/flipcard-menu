@@ -1,0 +1,87 @@
+
+    .clickable:hover {
+        cursor: pointer;
+        color: #666;
+    }
+    
+    .slide-container {
+        width: 400px;
+        margin: auto;
+    }
+    
+    .slide-item {
+        height: 200px;
+        width: 200px;
+        position: relative;
+    }
+    
+    .next-slide {
+        transform: perspective(800px) rotateY(90deg);
+        -webkit-transform: perspective(800px) rotateY(90deg);
+        -moz-transform: perspective(800px) rotateY(90deg);
+        left: 500px;
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+    }
+    
+    .slide-transition {
+        /* Animation/Transition properties */
+        -o-transition: all 0.5s ease-in-out;
+        -ms-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -webkit-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out; 
+    }
+    
+    .next-slide.slide-transition {
+        transform: perspective(800px) rotateY(0deg);
+        -webkit-transform: perspective(800px) rotateY(0deg);
+        -moz-transform: perspective(800px) rotateY(0deg);
+        left: 0px;
+    }
+    
+    .current-slide {
+        transform: perspective(800px) rotateY(0deg);
+        -webkit-transform: perspective(800px) rotateY(0deg);
+        -moz-transform: perspective(800px) rotateY(0deg);
+        left: 0px;
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+    }
+    
+    .current-slide.slide-out-left {
+        transform: perspective(800px) rotateY(-90deg);
+        -webkit-transform: perspective(800px) rotateY(-90deg);
+        -moz-transform: perspective(800px) rotateY(-90deg);
+        left: -500px;
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+    }
+    
+    .current-slide.slide-out-right {
+        transform: rotateY(90deg);
+        -webkit-transform: rotateY(90deg);
+        -moz-transform: rotateY(90deg);
+        left: 500px;
+    }
+    
+    .previous-slide {
+        transform: perspective(800px) rotateY(-90deg);
+        -webkit-transform: perspective(800px) rotateY(-90deg);
+        -moz-transform: perspective(800px) rotateY(-90deg);
+        left: -500px;
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+    }
+    
+    .previous-slide.slide-transition {
+        transform: perspective(800px) rotateY(0deg);
+        -webkit-transform: perspective(800px) rotateY(0deg);
+        -moz-transform: perspective(800px) rotateY(0deg);
+        left: 0px;
+    }
+    
