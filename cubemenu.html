@@ -5,23 +5,22 @@
     <title>Menu Flip implementation</title>
     <link rel="stylesheet" type="text/css" href="./css/reset.css" />
     <style type="text/css">
+
     .clickable:hover {
         cursor: pointer;
         color: #666;
     }
+    
     .slide-container {
         width: 400px;
         margin: auto;
-        
     }
     
     .slide-item {
         height: 200px;
         width: 200px;
         position: relative;
-
     }
-    
     
     .next-slide {
         transform: perspective(800px) rotateY(90deg);
@@ -43,7 +42,6 @@
     }
     
     .next-slide.slide-transition {
-        
         transform: perspective(800px) rotateY(0deg);
         -webkit-transform: perspective(800px) rotateY(0deg);
         -moz-transform: perspective(800px) rotateY(0deg);
@@ -51,7 +49,6 @@
     }
     
     .current-slide {
-        /* just show it */
         transform: perspective(800px) rotateY(0deg);
         -webkit-transform: perspective(800px) rotateY(0deg);
         -moz-transform: perspective(800px) rotateY(0deg);
@@ -102,11 +99,6 @@
 
 <p id="next-slide" class="clickable">Next</p>
 <p id="previous-slide" class="clickable">Previous</p>
-<div class="content-container">
-    <div id="show-slides" class="none">        
-    
-    </div>
-</div>
 
 <div class="clear"></div>
 
@@ -122,16 +114,16 @@
         <img id="4" alt="" src="./img/4.jpg" /></div>
     <div class="slide-item next-slide" id="nr5">
         <img id="5" alt="" src="./img/5.jpg" /></div>
-
 </div>
 <div class="clear"></div>
 
 <script type="text/javascript">
-    
-    
-    var slides = document.getElementsByClassName("slide-item");
-    // initial positioning
-    
+
+    /**
+     * Basic tween function
+     * Use setTimeout instead of setInterval:
+     * http://aerotwist.com/tutorials/ten-things-i-learned/
+    */
     var tweenX = function(element, distance, callback){
         var goal = element.style.left.replace("px", '') - distance;       
         setTimeout(draw(), 17);
@@ -199,12 +191,11 @@
         // identify next slide
         previous_slides = document.getElementsByClassName('previous-slide');
         if (previous_slides.length === 0) {
+            // there is no previous slide
+            console.log("There is no previous slide");
             return false;
         }
         slide = previous_slides.item(previous_slides.length - 1);
-        if (!slide) {
-            return false;
-        }
         
         window.setTimeout(function(){
             slide.style.zIndex = 1;
@@ -235,14 +226,14 @@
         return false;
     };
     
+    // Position elements so they are on the same heigth
+    // the rest of the positioning is in CSS
+    var slides = document.getElementsByClassName("slide-item");
     var cummulativeHeight = 0;
-    var cummulativeWidth = 0;
     for (var i = 0; i < slides.length; i++) {
         var slide = slides.item(i);
-        console.log(slide);
         cummulativeHeight += slide.style.height;
-        slide.style['top'] =  '-' + (i * 200) + 'px';
-        
+        slide.style['top'] =  '-' + (i * 200) + 'px'; 
     }
     
 </script>
